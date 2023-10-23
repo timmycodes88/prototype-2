@@ -18,6 +18,8 @@ const Themes = {
         border: {
           borderColor: "#ffffff",
         },
+        gray: "#808080",
+        divider: "#d9d9d9",
         notification: "#6200ee",
       },
     },
@@ -25,7 +27,7 @@ const Themes = {
   dark: {
     default: {
       colors: {
-        primary: "#bb86fc",
+        primary: "#ff0000",
         background: {
           backgroundColor: "#121212",
         },
@@ -36,7 +38,9 @@ const Themes = {
         border: {
           borderColor: "#000000",
         },
+        gray: "#808080",
         notification: "#bb86fc",
+        divider: "#303030",
       },
     },
   },

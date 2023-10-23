@@ -1,6 +1,7 @@
-import { Tabs } from "expo-router"
-import { Octicons } from "@expo/vector-icons"
+import { Link, Tabs } from "expo-router"
+import { Feather, Octicons } from "@expo/vector-icons"
 import useTheme from "../../../hooks/useTheme"
+import { Text, View } from "react-native"
 
 export default function TabLayout() {
   const { colors } = useTheme()
@@ -8,8 +9,48 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         ...TabsConfig.screenOptions,
-        tabBarStyle: { ...colors.background, borderTopWidth: 0 },
+        tabBarStyle: {
+          ...colors.background,
+          borderTopWidth: 0.5,
+          borderTopColor: colors.divider,
+        },
         tabBarActiveTintColor: colors.primary,
+        headerStyle: {
+          ...colors.background,
+          borderBottomWidth: 0.5,
+          borderBottomColor: colors.divider,
+          shadowOpacity: 0.2,
+        },
+        headerTintColor: colors.primary,
+        headerLeft: ({ tintColor }) => (
+          <Text
+            style={{
+              color: tintColor,
+              fontSize: 24,
+              fontWeight: "bold",
+              paddingHorizontal: 16,
+            }}
+          >
+            X2
+          </Text>
+        ),
+        headerRight: ({ tintColor }) => (
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 24,
+              fontSize: 22,
+              paddingHorizontal: 16,
+            }}
+          >
+            <Link href="/search">
+              <Feather name="search" size={24} color={tintColor} />
+            </Link>
+            <Link href="/activity">
+              <Feather name="bell" size={24} color={tintColor} />
+            </Link>
+          </View>
+        ),
       }}
     >
       <Tabs.Screen {...TabsConfig["home"]} />
@@ -23,7 +64,7 @@ export default function TabLayout() {
 
 const TabsConfig = {
   screenOptions: {
-    headerShown: false,
+    title: null,
     tabBarHideOnKeyboard: true,
     tabBarShowLabel: false,
   },
@@ -38,6 +79,19 @@ const TabsConfig = {
   push: {
     name: "push/index",
     options: {
+      headerLeft: ({ tintColor }) => (
+        <Text
+          style={{
+            color: tintColor,
+            fontSize: 24,
+            fontWeight: "bold",
+            paddingHorizontal: 16,
+          }}
+        >
+          Push yourself
+        </Text>
+      ),
+      headerRight: null,
       tabBarIcon: ({ color }) => (
         <Octicons name="diff-added" size={24} color={color} />
       ),
@@ -46,6 +100,35 @@ const TabsConfig = {
   channels: {
     name: "channels/index",
     options: {
+      headerLeft: ({ tintColor }) => (
+        <Text
+          style={{
+            color: tintColor,
+            fontSize: 24,
+            fontWeight: "bold",
+            paddingHorizontal: 16,
+          }}
+        >
+          Channels
+        </Text>
+      ),
+      headerRight: ({ tintColor }) => (
+        <View
+          style={{
+            flexDirection: "row",
+            gap: 24,
+            fontSize: 22,
+            paddingHorizontal: 16,
+          }}
+        >
+          <Link href="/new-chat">
+            <Octicons name="search" size={24} color={tintColor} />
+          </Link>
+          <Link href="/new-chat">
+            <Octicons name="diff-added" size={24} color={tintColor} />
+          </Link>
+        </View>
+      ),
       tabBarIcon: ({ color }) => (
         <Octicons name="play" size={24} color={color} />
       ),
@@ -54,6 +137,36 @@ const TabsConfig = {
   messages: {
     name: "messages/index",
     options: {
+      headerShadowVisible: false,
+      headerLeft: ({ tintColor }) => (
+        <Text
+          style={{
+            color: tintColor,
+            fontSize: 24,
+            fontWeight: "bold",
+            paddingHorizontal: 16,
+          }}
+        >
+          Messages
+        </Text>
+      ),
+      headerRight: ({ tintColor }) => (
+        <View
+          style={{
+            flexDirection: "row",
+            gap: 24,
+            fontSize: 22,
+            paddingHorizontal: 16,
+          }}
+        >
+          <Link href="/new-chat">
+            <Octicons name="search" size={24} color={tintColor} />
+          </Link>
+          <Link href="/new-chat">
+            <Octicons name="diff-added" size={24} color={tintColor} />
+          </Link>
+        </View>
+      ),
       tabBarIcon: ({ color }) => (
         <Octicons name="comment-discussion" size={24} color={color} />
       ),
@@ -62,6 +175,28 @@ const TabsConfig = {
   profile: {
     name: "profile/index",
     options: {
+      headerLeft: ({ tintColor }) => (
+        <Text
+          style={{
+            color: tintColor,
+            fontSize: 24,
+            fontWeight: "bold",
+            paddingHorizontal: 16,
+          }}
+        >
+          @TimAttracts
+        </Text>
+      ),
+      headerRight: ({ tintColor }) => (
+        <Octicons
+          name="gear"
+          size={24}
+          color={tintColor}
+          style={{
+            paddingHorizontal: 16,
+          }}
+        />
+      ),
       tabBarIcon: ({ color }) => (
         <Octicons name="person" size={24} color={color} />
       ),

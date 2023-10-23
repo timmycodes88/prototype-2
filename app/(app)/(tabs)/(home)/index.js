@@ -4,7 +4,7 @@ import T from "../../../../components/ui/T"
 const index = () => {
   return (
     <SV>
-      <T>xxxxxxxxxxxxxx</T>
+      <T></T>
     </SV>
   )
 }
